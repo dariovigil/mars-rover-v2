@@ -31,16 +31,6 @@
 		"oAP": "\/index.html",
 		"oF": 0
 		},
-	"\/javascripts\/app-min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/javascripts\/app-min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
 	"\/javascripts\/app.js": {
 		"ft": 64,
 		"ma": 0,
