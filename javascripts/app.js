@@ -1,8 +1,8 @@
 // Rover Object Goes Here
 // ======================
 const rover = {
-  x: 5,
-  y: 5,
+  x: 0,
+  y: 0,
   facingDirection: 'N',
   travelLog: [],
   printMovement(movement) {
@@ -57,14 +57,25 @@ const rover = {
         }
         break;
       case 'backwards':
-      // To do
-        console.log(`rover moves backwards, it's position is (${this.x}, ${this.y})`);
+        if (this.facingDirection === 'S' && this.y > 0) {
+          this.y -= 1;
+        }
+        if (this.facingDirection === 'N' && this.y < 9) {
+          this.y += 1;
+        }
+        if (this.facingDirection === 'W' && this.x < 9) {
+          this.x += 1;
+        }
+        if (this.facingDirection === 'E' && this.x > 0) {
+          this.x -= 1;
+        }
         break;
       default:
     }
     this.travelLog.push([`(${this.x}, ${this.y})`]);
     this.printMovement(direction);
     this.printTravelLog();
+    window.updateMap();
   },
 };
 
@@ -85,6 +96,23 @@ const marsMap = createMap(10, 10, '_');
 marsMap[rover.x][rover.y] = 'X';
 console.log(marsMap);
 
+const currentDiv = document.getElementById('map');
+const roverDiv = document.createElement('div');
+roverDiv.id = 'rover';
+currentDiv.appendChild(roverDiv);
+
+marsMap.forEach((el) => {
+  el.forEach(() => {
+    const newDiv = document.createElement('div');
+    currentDiv.appendChild(newDiv);
+  });
+});
+function updateMap() {
+  console.log('update map called');
+  roverDiv.style.left = `${rover.x}px`;
+  roverDiv.style.top = `${rover.y*62}px`;
+}
+
 function setRoverPosition(posX, posY) {
   marsMap[posX][posY] = 'X';
   console.log(`Mars rover is in coordinates: ${rover.x}, ${rover.y}`);
@@ -96,17 +124,6 @@ setRoverPosition(rover.x, rover.y);
 
 const sendCommandsBtn = document.getElementById('btn-send-commands');
 const inputTextCommands = document.getElementById('input-text-commands');
-
-// function sendCommands(commands) {
-//   [...commands].forEach((char) => {
-//     if (char === 'f') {
-//       rover.move('forward');
-//     } else if (char === 'b') {
-//       rover.move('backwards');
-//     }
-//   });
-//   rover.printTravelLog();
-// }
 
 function sendCommands(commands) {
   [...commands].forEach((char) => {
@@ -129,7 +146,8 @@ function sendCommands(commands) {
   });
 }
 
-function validateCommands() {
+function validateCommands(e) {
+  e.preventDefault();
   const commands = inputTextCommands.value;
   const re = new RegExp(/^['f', 'r', 'l', 'b']+$/);
   if (!commands) {
