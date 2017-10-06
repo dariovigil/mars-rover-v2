@@ -73,9 +73,10 @@ const rover = {
         break;
       default:
     }
-    this.travelLog.push([`(${this.x}, ${this.y})`]);
+    this.travelLog.push([`(X:${this.x},Y:${this.y})`]);
     this.printMovement(direction);
     this.printTravelLog();
+    window.updateTravelLog();
     window.updateMap();
   },
 };
@@ -130,6 +131,15 @@ function updateMap() {
       break;
     default:
   }
+}
+//
+// UPDATE TRAVELLOG
+//
+const travelLogList = document.getElementById('travel-log');
+function updateTravelLog () {
+  const newListItem = document.createElement('li');
+  newListItem.innerHTML = rover.travelLog[(rover.travelLog.length) - 1];
+  travelLogList.appendChild(newListItem);
 }
 
 function setRoverPosition(posX, posY) {
