@@ -10,27 +10,31 @@ body {
   background-color: #444;
 }
 #map {
-  margin: auto;
+  background-color: #000;
+  border: none;
   display: flex;
   flex-wrap: wrap;
-  background-color: #000;
   height: 620px;
+  margin: auto;
+  position: relative;
   width: 620px;
 }
 
 div {
-  background-image: url("../img/tile_a.png");
   border: 2px dashed rgba(0,0,0,.4);
+  background-image: url("../img/tile_a.png");
   height: 10%;
   width: 10%;
 
 }
 
 #rover {
-  width: 62px;
-  height: 62px;
-  border: none;
   background-image: url("../img/rover.png");
   background-position: center, center;
+  border: none;
+  height: 62px;
   position: absolute;
+  left: 0;
+  top: 0;
+  width: 62px;
 }
