@@ -75,9 +75,14 @@ const rover = {
     this.travelLog.push([`(${this.x}, ${this.y})`]);
     this.printMovement(direction);
     this.printTravelLog();
+<<<<<<< HEAD
     myMap.update();
+=======
+    window.updateMap();
+>>>>>>> 7590b1c519e37d4ef799f013d154fb1fc205b6a9
   },
 };
+
 // MAP
 
 const myMap = {
@@ -105,8 +110,6 @@ function createMap(rows, cols, defaultValue) {
 const marsMap = createMap(10, 10, '_');
 marsMap[rover.x][rover.y] = 'X';
 console.log(marsMap);
-// marsMap.update();
-// marsMap.updateMap();
 
 const currentDiv = document.getElementById('map');
 const roverDiv = document.createElement('div');
@@ -122,7 +125,7 @@ marsMap.forEach((el) => {
 function updateMap() {
   console.log('update map called');
   roverDiv.style.left = `${rover.x}px`;
-  roverDiv.style.top = `${rover.y}px`;
+  roverDiv.style.top = `${rover.y*62}px`;
 }
 
 function setRoverPosition(posX, posY) {
