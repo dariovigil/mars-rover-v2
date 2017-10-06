@@ -10,11 +10,13 @@ body {
   background-color: #444;
 }
 #map {
+  border: none;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   background-color: #000;
   height: 620px;
+  position: relative;
   width: 620px;
 }
 

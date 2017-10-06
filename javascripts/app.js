@@ -39,6 +39,7 @@ const rover = {
         console.log('ERROR: The valid parameters are "left" or "right"');
     }
     console.log(`Mars rover has turned ${turnDirection}, now it is facing: ${this.facingDirection}`);
+    window.updateMap();
   },
   move(direction) {
     switch (direction) {
@@ -78,9 +79,9 @@ const rover = {
     window.updateMap();
   },
 };
-
+//
 // MAP
-
+//
 function createMap(rows, cols, defaultValue) {
   const arr = [];
   for (let i = 0; i < rows; i++) {
@@ -98,6 +99,7 @@ console.log(marsMap);
 
 const currentDiv = document.getElementById('map');
 const roverDiv = document.createElement('div');
+const tileSize = 62;
 roverDiv.id = 'rover';
 currentDiv.appendChild(roverDiv);
 
@@ -107,10 +109,27 @@ marsMap.forEach((el) => {
     currentDiv.appendChild(newDiv);
   });
 });
+
 function updateMap() {
-  console.log('update map called');
-  roverDiv.style.left = `${rover.x}px`;
-  roverDiv.style.top = `${rover.y*62}px`;
+  // MOVE
+  roverDiv.style.left = `${rover.x * tileSize}px`;
+  roverDiv.style.top = `${rover.y * tileSize}px`;
+  // TURN
+  switch (rover.facingDirection) {
+    case 'E':
+      roverDiv.style.transform = 'rotate(90deg)';
+      break;
+    case 'S':
+      roverDiv.style.transform = 'rotate(180deg)';
+      break;
+    case 'W':
+      roverDiv.style.transform = 'rotate(270deg)';
+      break;
+    case 'N':
+      roverDiv.style.transform = 'rotate(360deg)';
+      break;
+    default:
+  }
 }
 
 function setRoverPosition(posX, posY) {
@@ -119,9 +138,9 @@ function setRoverPosition(posX, posY) {
   console.log(`Mars rover is facing: ${rover.facingDirection}`);
 }
 setRoverPosition(rover.x, rover.y);
-
+//
 // SEND COMMANDS
-
+//
 const sendCommandsBtn = document.getElementById('btn-send-commands');
 const inputTextCommands = document.getElementById('input-text-commands');
 
