@@ -75,11 +75,22 @@ const rover = {
     this.travelLog.push([`(${this.x}, ${this.y})`]);
     this.printMovement(direction);
     this.printTravelLog();
-    map.update();
+    myMap.update();
   },
 };
 // MAP
 
+const myMap = {
+  createMap(rows, cols, defaultValue) {
+    const arr = [];
+    for (let i = 0; i < rows; i++) {
+      arr.push([]);
+      arr[i].push(new Array(cols));
+      for (let j = 0; j < cols; j++) {
+        arr[i][j] = defaultValue;
+      }
+    }
+    return arr;
 function createMap(rows, cols, defaultValue) {
   const arr = [];
   for (let i = 0; i < rows; i++) {
