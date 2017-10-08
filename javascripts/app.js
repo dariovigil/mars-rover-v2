@@ -98,16 +98,16 @@ const marsMap = createMap(10, 10, '_');
 marsMap[rover.x][rover.y] = 'X';
 console.log(marsMap);
 
-const currentDiv = document.getElementById('map');
+const mapDiv = document.getElementById('map');
 const roverDiv = document.createElement('div');
 const tileSize = 62;
 roverDiv.id = 'rover';
-currentDiv.appendChild(roverDiv);
+mapDiv.appendChild(roverDiv);
 
 marsMap.forEach((el) => {
   el.forEach(() => {
     const newDiv = document.createElement('div');
-    currentDiv.appendChild(newDiv);
+    mapDiv.appendChild(newDiv);
   });
 });
 
@@ -133,10 +133,27 @@ function updateMap() {
   }
 }
 //
+// OBSTACLES
+//
+(function generateObstacles() {
+  const obstaclesArr = [[]];
+  for (let i = 0; i < 8; i += 1) {
+    const randomnumberX = Math.ceil(Math.random() * 9);
+    const randomnumberY = Math.ceil(Math.random() * 9);
+    obstaclesArr[i] = [randomnumberX, randomnumberY];
+    const obstacleDiv = document.createElement('span');
+    obstacleDiv.classList.add('obstacle');
+    obstacleDiv.style.left = `${obstaclesArr[i][0] * tileSize}px`;
+    obstacleDiv.style.top = `${obstaclesArr[i][1] * tileSize}px`;
+    mapDiv.appendChild(obstacleDiv);
+  }
+  console.log(obstaclesArr);
+}());
+//
 // UPDATE TRAVELLOG
 //
 const travelLogList = document.getElementById('travel-log');
-function updateTravelLog () {
+function updateTravelLog() {
   const newListItem = document.createElement('li');
   newListItem.innerHTML = rover.travelLog[(rover.travelLog.length) - 1];
   travelLogList.appendChild(newListItem);

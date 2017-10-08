@@ -25,6 +25,40 @@
 		"oAP": "\/.gitignore",
 		"oF": 0
 		},
+	"\/assets\/32x32grid.png": {
+		"ft": 32768,
+		"iS": 156464,
+		"oA": 0,
+		"oAP": "\/assets\/32x32grid.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/assets\/obstacle.psd": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/obstacle.psd",
+		"oF": 0
+		},
+	"\/assets\/rover.psd": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/rover.psd",
+		"oF": 0
+		},
+	"\/assets\/tanks_by_leetzero-d5lvqz2.png": {
+		"ft": 32768,
+		"iS": 9894,
+		"oA": 0,
+		"oAP": "\/assets\/tanks_by_leetzero-d5lvqz2.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"\/css\/styles-min.css": {
 		"aP": 1,
 		"bl": 0,
@@ -45,6 +79,17 @@
 		"oF": 0,
 		"oS": 3
 		},
+	"\/img\/obstacle.png": {
+		"ft": 32768,
+		"iS": 1982,
+		"oA": 0,
+		"oAP": "\/img\/obstacle.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
 	"\/img\/rover.png": {
 		"ft": 32768,
 		"iS": 1475,
@@ -61,6 +106,28 @@
 		"iS": 1375,
 		"oA": 0,
 		"oAP": "\/img\/tile_a.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/img\/tile_b.png": {
+		"ft": 32768,
+		"iS": 1807,
+		"oA": 0,
+		"oAP": "\/img\/tile_b.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/img\/tile_c.png": {
+		"ft": 32768,
+		"iS": 1490,
+		"oA": 0,
+		"oAP": "\/img\/tile_c.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,

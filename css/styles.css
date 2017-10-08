@@ -74,3 +74,14 @@ button {
   /*transition-property: all;
   transition-duration: 0.5s;*/
 }
+
+.obstacle {
+  width: 62px;
+  height: 62px;
+  border: none;
+  background-image: url("../img/obstacle.png");
+  background-position: center, center;
+  position: absolute;
+  left: 62px;
+  z-index: 1;
+}
