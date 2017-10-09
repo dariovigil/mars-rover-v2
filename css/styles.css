@@ -7,7 +7,6 @@ ol, ul {
 	list-style: none;
 }
 body {
-  /*display: flex;*/
   background-color: #444;
   color: white;
   font-family: monospace;
@@ -31,13 +30,10 @@ body {
   color: white;
 }
 form {
-  /*border: 1px solid red;*/
-  /*width: 620px;*/
   height: 30px;
   display: flex;
   justify-content: center;
   margin: auto;
-  /*align-items: center;*/
 }
 form input {
   width: 200px;
@@ -82,8 +78,6 @@ button {
   background-image: url("../img/rover.png");
   background-position: center, center;
   position: absolute;
-  /*transition-property: all;
-  transition-duration: 0.5s;*/
 }
 
 .obstacle {
