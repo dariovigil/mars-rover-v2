@@ -41,43 +41,133 @@ const rover = {
     console.log(`Mars rover has turned ${turnDirection}, now it is facing: ${this.facingDirection}`);
     window.updateMap();
   },
+  // move(direction) {
+  //   switch (direction) {
+  //     case 'forward':
+  //       if (this.facingDirection === 'N' && this.y > 0 && !(collisionDetection(this.x, this.y - 1))) {
+  //         this.y -= 1;
+  //       }
+  //       if (this.facingDirection === 'S' && this.y < 9 && !(collisionDetection(this.x, this.y + 1))) {
+  //         this.y += 1;
+  //       }
+  //       if (this.facingDirection === 'E' && this.x < 9 && !(collisionDetection(this.x, this.y + 1))) {
+  //         this.x += 1;
+  //       }
+  //       if (this.facingDirection === 'W' && this.x > 0 && !(collisionDetection(this.x, this.y - 1))) {
+  //         this.x -= 1;
+  //       }
+  //       break;
+  //     case 'backwards':
+  //       if (this.facingDirection === 'S' && this.y > 0 && !(collisionDetection(this.x, this.y - 1))) {
+  //         this.y -= 1;
+  //       }
+  //       if (this.facingDirection === 'N' && this.y < 9 && !(collisionDetection(this.x, this.y + 1))) {
+  //         this.y += 1;
+  //       }
+  //       if (this.facingDirection === 'W' && this.x < 9 && !(collisionDetection(this.x, this.y + 1))) {
+  //         this.x += 1;
+  //       }
+  //       if (this.facingDirection === 'E' && this.x > 0 && !(collisionDetection(this.x, this.y - 1))) {
+  //         this.x -= 1;
+  //       }
+  //       break;
+  //     default:
+  //   }
+  //   // collisionDetection(this.x, this.y);
+  //   this.travelLog.push([`(x:${this.x}, y:${this.y})`]);
+  //   this.printMovement(direction);
+  //   this.printTravelLog();
+  //   window.updateTravelLog();
+  //   window.updateMap();
+  // },
+  // move(direction) {
+  //
+  //   switch (direction) {
+  //     case 'forward':
+  //       if (this.facingDirection === 'N' && this.y > 0) {
+  //         this.y -= 1;
+  //       }
+  //       if (this.facingDirection === 'S' && this.y < 9) {
+  //         this.y += 1;
+  //       }
+  //       if (this.facingDirection === 'E' && this.x < 9) {
+  //         this.x += 1;
+  //       }
+  //       if (this.facingDirection === 'W' && this.x > 0) {
+  //         this.x -= 1;
+  //       }
+  //       break;
+  //     case 'backwards':
+  //       if (this.facingDirection === 'S' && this.y > 0) {
+  //         this.y -= 1;
+  //       }
+  //       if (this.facingDirection === 'N' && this.y < 9) {
+  //         this.y += 1;
+  //       }
+  //       if (this.facingDirection === 'W' && this.x < 9) {
+  //         this.x += 1;
+  //       }
+  //       if (this.facingDirection === 'E' && this.x > 0) {
+  //         this.x -= 1;
+  //       }
+  //       break;
+  //     default:
+  //   }
+  //   collisionDetection(this.x, this.y);
+  //   this.travelLog.push([`(x:${this.x}, y:${this.y})`]);
+  //   this.printMovement(direction);
+  //   this.printTravelLog();
+  //   window.updateTravelLog();
+  //   window.updateMap();
+  // },
   move(direction) {
+    let nextX = this.x;
+    let nextY = this.y;
+    // console.log(nextX);
+    // console.log(nextY);
     switch (direction) {
       case 'forward':
         if (this.facingDirection === 'N' && this.y > 0) {
-          this.y -= 1;
+          nextY -= 1;
         }
         if (this.facingDirection === 'S' && this.y < 9) {
-          this.y += 1;
+          nextY += 1;
         }
         if (this.facingDirection === 'E' && this.x < 9) {
-          this.x += 1;
+          nextX += 1;
         }
         if (this.facingDirection === 'W' && this.x > 0) {
-          this.x -= 1;
+          nextX -= 1;
         }
         break;
       case 'backwards':
         if (this.facingDirection === 'S' && this.y > 0) {
-          this.y -= 1;
+          nextY -= 1;
         }
         if (this.facingDirection === 'N' && this.y < 9) {
-          this.y += 1;
+          nextY += 1;
         }
         if (this.facingDirection === 'W' && this.x < 9) {
-          this.x += 1;
+          nextX += 1;
         }
         if (this.facingDirection === 'E' && this.x > 0) {
-          this.x -= 1;
+          nextX -= 1;
         }
         break;
       default:
     }
-    this.travelLog.push([`(X:${this.x},Y:${this.y})`]);
-    this.printMovement(direction);
-    this.printTravelLog();
-    window.updateTravelLog();
-    window.updateMap();
+    console.log(nextX);
+    if (!(collisionDetection(nextX, nextY))) {
+      this.x = nextX;
+      this.y = nextY;
+      this.travelLog.push([`(x:${this.x}, y:${this.y})`]);
+      this.printMovement(direction);
+      this.printTravelLog();
+      window.updateTravelLog();
+      window.updateMap();
+    } else {
+      console.log('OBSTACLE ENCOUNTERED!');
+    }
   },
 };
 //
@@ -135,8 +225,8 @@ function updateMap() {
 //
 // OBSTACLES
 //
+const obstaclesArr = [[]];
 (function generateObstacles() {
-  const obstaclesArr = [[]];
   for (let i = 0; i < 8; i += 1) {
     const randomnumberX = Math.ceil(Math.random() * 9);
     const randomnumberY = Math.ceil(Math.random() * 9);

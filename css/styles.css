@@ -15,23 +15,34 @@ body {
 }
 .container {
   display: flex;
+  margin-top: 3em;
 }
 .travel-log-container {
+  font-size: .9em;
+  position: absolute;
+  margin-left: 3em;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  color: #C0C0C0;
+}
+.travel-log-container span {
+  margin-bottom: .7em;
+  color: white;
 }
 form {
   /*border: 1px solid red;*/
-  width: 40%;
+  /*width: 620px;*/
   height: 30px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: auto;
   /*align-items: center;*/
 }
 form input {
   width: 200px;
   font-size: .9em;
+  margin-right: 2em;
   font-family: monospace;
 
 }

@@ -160,6 +160,26 @@
 		"sC": 0,
 		"tS": 0
 		},
+	"\/javascripts\/collision-detection-min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 0,
+		"oAP": "\/javascripts\/collision-detection-min-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/javascripts\/collision-detection.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 0,
+		"oAP": "\/javascripts\/collision-detection-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
 	"\/node_modules": {
 		"ft": 65536,
 		"oA": 2,
