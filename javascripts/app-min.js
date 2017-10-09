@@ -8,9 +8,6 @@ const rover = {
   printMovement(movement) {
     console.log(`Rover moves ${movement}, it's position is (${this.x}, ${this.y})`);
   },
-  printTravelLog() {
-    console.log(`TravelLog is updated: ${this.travelLog}`);
-  },
   turn(turnDirection) {
     switch (turnDirection) {
       case 'left':
@@ -41,90 +38,9 @@ const rover = {
     console.log(`Mars rover has turned ${turnDirection}, now it is facing: ${this.facingDirection}`);
     window.updateMap();
   },
-  // move(direction) {
-  //   switch (direction) {
-  //     case 'forward':
-  //       if (this.facingDirection === 'N' && this.y > 0 && !(collisionDetection(this.x, this.y - 1))) {
-  //         this.y -= 1;
-  //       }
-  //       if (this.facingDirection === 'S' && this.y < 9 && !(collisionDetection(this.x, this.y + 1))) {
-  //         this.y += 1;
-  //       }
-  //       if (this.facingDirection === 'E' && this.x < 9 && !(collisionDetection(this.x, this.y + 1))) {
-  //         this.x += 1;
-  //       }
-  //       if (this.facingDirection === 'W' && this.x > 0 && !(collisionDetection(this.x, this.y - 1))) {
-  //         this.x -= 1;
-  //       }
-  //       break;
-  //     case 'backwards':
-  //       if (this.facingDirection === 'S' && this.y > 0 && !(collisionDetection(this.x, this.y - 1))) {
-  //         this.y -= 1;
-  //       }
-  //       if (this.facingDirection === 'N' && this.y < 9 && !(collisionDetection(this.x, this.y + 1))) {
-  //         this.y += 1;
-  //       }
-  //       if (this.facingDirection === 'W' && this.x < 9 && !(collisionDetection(this.x, this.y + 1))) {
-  //         this.x += 1;
-  //       }
-  //       if (this.facingDirection === 'E' && this.x > 0 && !(collisionDetection(this.x, this.y - 1))) {
-  //         this.x -= 1;
-  //       }
-  //       break;
-  //     default:
-  //   }
-  //   // collisionDetection(this.x, this.y);
-  //   this.travelLog.push([`(x:${this.x}, y:${this.y})`]);
-  //   this.printMovement(direction);
-  //   this.printTravelLog();
-  //   window.updateTravelLog();
-  //   window.updateMap();
-  // },
-  // move(direction) {
-  //
-  //   switch (direction) {
-  //     case 'forward':
-  //       if (this.facingDirection === 'N' && this.y > 0) {
-  //         this.y -= 1;
-  //       }
-  //       if (this.facingDirection === 'S' && this.y < 9) {
-  //         this.y += 1;
-  //       }
-  //       if (this.facingDirection === 'E' && this.x < 9) {
-  //         this.x += 1;
-  //       }
-  //       if (this.facingDirection === 'W' && this.x > 0) {
-  //         this.x -= 1;
-  //       }
-  //       break;
-  //     case 'backwards':
-  //       if (this.facingDirection === 'S' && this.y > 0) {
-  //         this.y -= 1;
-  //       }
-  //       if (this.facingDirection === 'N' && this.y < 9) {
-  //         this.y += 1;
-  //       }
-  //       if (this.facingDirection === 'W' && this.x < 9) {
-  //         this.x += 1;
-  //       }
-  //       if (this.facingDirection === 'E' && this.x > 0) {
-  //         this.x -= 1;
-  //       }
-  //       break;
-  //     default:
-  //   }
-  //   collisionDetection(this.x, this.y);
-  //   this.travelLog.push([`(x:${this.x}, y:${this.y})`]);
-  //   this.printMovement(direction);
-  //   this.printTravelLog();
-  //   window.updateTravelLog();
-  //   window.updateMap();
-  // },
   move(direction) {
     let nextX = this.x;
     let nextY = this.y;
-    // console.log(nextX);
-    // console.log(nextY);
     switch (direction) {
       case 'forward':
         if (this.facingDirection === 'N' && this.y > 0) {
@@ -156,13 +72,11 @@ const rover = {
         break;
       default:
     }
-    console.log(nextX);
     if (!(collisionDetection(nextX, nextY))) {
       this.x = nextX;
       this.y = nextY;
       this.travelLog.push([`(x:${this.x}, y:${this.y})`]);
       this.printMovement(direction);
-      this.printTravelLog();
       window.updateTravelLog();
       window.updateMap();
     } else {
@@ -186,7 +100,6 @@ function createMap(rows, cols, defaultValue) {
 }
 const marsMap = createMap(10, 10, '_');
 marsMap[rover.x][rover.y] = 'X';
-console.log(marsMap);
 
 const mapDiv = document.getElementById('map');
 const roverDiv = document.createElement('div');
@@ -237,7 +150,7 @@ const obstaclesArr = [[]];
     obstacleDiv.style.top = `${obstaclesArr[i][1] * tileSize}px`;
     mapDiv.appendChild(obstacleDiv);
   }
-  console.log(obstaclesArr);
+  // console.log(obstaclesArr);
 }());
 //
 // UPDATE TRAVELLOG
@@ -248,13 +161,6 @@ function updateTravelLog() {
   newListItem.innerHTML = rover.travelLog[(rover.travelLog.length) - 1];
   travelLogList.appendChild(newListItem);
 }
-
-function setRoverPosition(posX, posY) {
-  marsMap[posX][posY] = 'X';
-  console.log(`Mars rover is in coordinates: ${rover.x}, ${rover.y}`);
-  console.log(`Mars rover is facing: ${rover.facingDirection}`);
-}
-setRoverPosition(rover.x, rover.y);
 //
 // SEND COMMANDS
 //
@@ -277,7 +183,7 @@ function sendCommands(commands) {
         rover.turn('left');
         break;
       default:
-        console.log('invalid input');
+        console.log('INVALID INPUT!');
     }
   });
 }
@@ -292,10 +198,9 @@ function validateCommands(e) {
     sendCommands(commands);
     inputTextCommands.value = '';
   } else {
-    console.log('invalid command!');
+    console.log('INVALID COMMAND!');
   }
 }
-
 
 sendCommandsBtn.addEventListener('click', validateCommands);
 
